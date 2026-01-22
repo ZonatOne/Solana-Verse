@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZonatOne - Web3 Social Media</title>
+  <meta name="description" content="ZonatOne - A decentralized social media platform powered by Solana and Phantom Wallet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ==================== LOGIN PAGE ==================== -->
+  <div id="loginPage" class="page active">
+    <div class="login-container">
+      <div class="logo-container">
+        <img src="assets/logo.png" alt="ZonatOne Logo">
+      </div>
+      
+      <div class="login-card">
+        <h1>Welcome to ZonatOne</h1>
+        <p>Connect your Phantom Wallet to join the Web3 social revolution</p>
+        
+        <div class="wallet-info">
+          <p>✨ No SOL balance required</p>
+          <p>🔐 Secure wallet authentication</p>
+          <p>🌐 Decentralized identity</p>
+        </div>
+        
+        <button id="connectWalletBtn" class="btn btn-primary">
+          <span>👻</span>
+          Connect Phantom Wallet
+        </button>
+        
+        <div id="walletNotInstalled" class="wallet-info hidden" style="margin-top: 1rem; background: rgba(255, 0, 0, 0.1); border-color: rgba(255, 0, 0, 0.3);">
+          <p style="color: #ff6b6b;">⚠️ Phantom Wallet not detected!</p>
+          <p style="color: #ff6b6b; margin-top: 0.5rem;">
+            <a href="https://phantom.app/" target="_blank" style="color: var(--primary-green); text-decoration: underline;">Install Phantom Wallet</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PROFILE SETUP PAGE ==================== -->
+  <div id="profileSetupPage" class="page">
+    <div class="profile-setup-container">
+      <h2>Complete Your Profile</h2>
+      <p>Set up your ZonatOne identity</p>
+      
+      <div class="wallet-display">
+        <span>🔗</span>
+        <span id="walletAddressDisplay">Loading...</span>
+      </div>
+      
+      <div class="avatar-upload">
+        <div class="avatar-preview" id="avatarPreview">
+          👤
+        </div>
+        <div class="form-group">
+          <label>Avatar URL (optional)</label>
+          <input type="url" id="avatarInput" placeholder="https://example.com/avatar.jpg">
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>Username *</label>
+        <input type="text" id="usernameInput" placeholder="Enter your username" required maxlength="20">
+        <small style="color: var(--text-muted); font-size: 0.85rem; display: block; margin-top: 0.5rem;">
+          This will be your display name on ZonatOne
+        </small>
+      </div>
+      
+      <button id="createProfileBtn" class="btn btn-primary" style="width: 100%;">
+        Create Profile
+      </button>
+    </div>
+  </div>
+
+  <!-- ==================== MAIN APP PAGE ==================== -->
+  <div id="mainPage" class="page">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-left">
+        <div class="navbar-logo">
+          <img src="assets/logo.png" alt="ZonatOne">
+        </div>
+        <div class="search-bar">
+          <input type="text" placeholder="Search ZonatOne...">
+        </div>
+      </div>
+      
+      <div class="navbar-right">
+        <div class="user-menu" id="userMenu">
+          <img id="navUserAvatar" src="" alt="User" class="user-avatar-small">
+          <span id="navUsername">User</span>
+          <span>▼</span>
+        </div>
+        <button id="logoutBtn" class="btn btn-secondary btn-small">
+          Logout
+        </button>
+      </div>
+    </nav>
+
+    <!-- Stories Section -->
+    <div class="stories-section">
+      <div class="stories-container" id="storiesContainer">
+        <!-- Stories will be dynamically loaded -->
+      </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+      <!-- Sidebar Left -->
+      <aside class="sidebar-left">
+        <div class="profile-card">
+          <img id="profileCardAvatar" src="" alt="Profile" class="profile-card-avatar">
+          <h3 id="profileCardUsername">Loading...</h3>
+          <p class="wallet-address" id="profileCardWallet">Loading...</p>
+          
+          <div class="profile-stats">
+            <div class="stat-item">
+              <span class="number">142</span>
+              <span class="label">Posts</span>
+            </div>
+            <div class="stat-item">
+              <span class="number">1.2K</span>
+              <span class="label">Friends</span>
+            </div>
+            <div class="stat-item">
+              <span class="number">856</span>
+              <span class="label">Likes</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Feed -->
+      <main class="feed">
+        <!-- Create Post Card -->
+        <div class="create-post-card">
+          <div class="create-post-input">
+            <img id="createPostAvatar" src="" alt="User" class="create-post-avatar">
+            <input type="text" placeholder="What's on your mind?" id="createPostTrigger" readonly>
+          </div>
+        </div>
+
+        <!-- Posts Container -->
+        <div id="postsContainer">
+          <!-- Posts will be dynamically loaded -->
+        </div>
+      </main>
+
+      <!-- Sidebar Right -->
+      <aside class="sidebar-right">
+        <div class="suggestions-card">
+          <h3>Friend Suggestions</h3>
+          <div id="suggestionsContainer">
+            <!-- Suggestions will be dynamically loaded -->
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- ==================== CREATE POST MODAL ==================== -->
+  <div id="createPostModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Create Post</h2>
+        <button class="modal-close" id="closeCreatePostModal">×</button>
+      </div>
+      
+      <div class="form-group">
+        <label>What's on your mind?</label>
+        <textarea id="postContentInput" rows="5" style="width: 100%; padding: var(--spacing-md); background: var(--bg-tertiary); border: 1px solid var(--glass-border); border-radius: var(--radius-md); color: var(--text-primary); font-family: 'Inter', sans-serif; font-size: 1rem; resize: vertical;" placeholder="Share something with ZonatOne..."></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label>Image URL (optional)</label>
+        <input type="url" id="postImageInput" placeholder="https://example.com/image.jpg">
+      </div>
+      
+      <button id="submitPostBtn" class="btn btn-primary" style="width: 100%;">
+        Post to ZonatOne
+      </button>
+    </div>
+  </div>
+
+  <!-- ==================== STORY VIEWER MODAL ==================== -->
+  <div id="storyViewerModal" class="modal">
+    <div class="modal-content" style="max-width: 480px;">
+      <div class="modal-header">
+        <h2 id="storyUsername">Story</h2>
+        <button class="modal-close" id="closeStoryModal">×</button>
+      </div>
+      
+      <div style="text-align: center;">
+        <img id="storyImage" src="" alt="Story" style="width: 100%; border-radius: var(--radius-md); max-height: 600px; object-fit: cover;">
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
