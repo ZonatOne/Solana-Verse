@@ -23,8 +23,7 @@
     <!-- Logo -->
     <div class="logo-container">
       <div class="logo">
-        <span class="logo-icon">Z</span>
-        <span class="logo-text">ZonatOne</span>
+        <img src="assets/zonatone-logo.png" alt="ZonatOne" class="logo-image">
       </div>
       <p class="tagline">Web3 Social Media Platform</p>
     </div>
@@ -74,9 +73,11 @@
         </div>
 
         <div class="form-group">
-          <label for="avatarInput">Avatar URL (optional)</label>
-          <input type="url" id="avatarInput" class="input" placeholder="https://example.com/avatar.jpg"
-            autocomplete="off">
+          <label for="avatarInput">Choose Avatar (optional)</label>
+          <input type="file" id="avatarInput" class="input-file" accept="image/*">
+          <label for="avatarInput" class="file-upload-btn">
+            📷 Choose Photo
+          </label>
         </div>
 
         <div class="avatar-preview" id="avatarPreview">

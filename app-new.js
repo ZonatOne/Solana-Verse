@@ -177,28 +177,46 @@ document.getElementById('connectWalletBtn').addEventListener('click', async () =
     }
 });
 
-// Avatar URL Input
-document.getElementById('avatarInput').addEventListener('input', (e) => {
-    const url = e.target.value.trim();
+// Avatar File Input
+document.getElementById('avatarInput').addEventListener('change', (e) => {
+    const file = e.target.files[0];
     const preview = document.getElementById('avatarPreview');
 
-    if (url) {
-        try {
-            new URL(url);
-            preview.innerHTML = `<img src="${url}" alt="Avatar" onerror="this.parentElement.innerHTML='<div class=\\"avatar-placeholder\\">👤</div>'; showToast('Failed to load image', 'error');">`;
-        } catch (err) {
-            showToast('Please enter a valid URL', 'error');
-            preview.innerHTML = '<div class="avatar-placeholder">👤</div>';
+    if (file) {
+        // Check if file is an image
+        if (!file.type.startsWith('image/')) {
+            showToast('Please select an image file', 'error');
+            e.target.value = '';
+            return;
         }
+
+        // Check file size (max 5MB)
+        if (file.size > 5 * 1024 * 1024) {
+            showToast('Image size must be less than 5MB', 'error');
+            e.target.value = '';
+            return;
+        }
+
+        // Read and display image
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            const imageUrl = event.target.result;
+            preview.innerHTML = `<img src="${imageUrl}" alt="Avatar">`;
+
+            // Store image data
+            window.tempAvatarData = imageUrl;
+        };
+        reader.readAsDataURL(file);
     } else {
         preview.innerHTML = '<div class="avatar-placeholder">👤</div>';
+        window.tempAvatarData = null;
     }
 });
 
 // Create Profile Button
 document.getElementById('createProfileBtn').addEventListener('click', () => {
     const username = document.getElementById('usernameInput').value.trim();
-    const avatarUrl = document.getElementById('avatarInput').value.trim();
+    const avatarData = window.tempAvatarData;
 
     // Validation
     if (!username) {
@@ -216,8 +234,8 @@ document.getElementById('createProfileBtn').addEventListener('click', () => {
         return;
     }
 
-    // Create user
-    currentUser = createUser(tempWalletAddress, username, avatarUrl || null);
+    // Create user with uploaded avatar or default
+    currentUser = createUser(tempWalletAddress, username, avatarData || null);
     save('currentUser', currentUser);
 
     showToast(`Welcome to ZonatOne, ${username}!`, 'success');
@@ -225,7 +243,6 @@ document.getElementById('createProfileBtn').addEventListener('click', () => {
 
     // Redirect after 2 seconds
     setTimeout(() => {
-        // In real app, redirect to main feed
         window.location.href = 'feed.html';
     }, 2000);
 });
