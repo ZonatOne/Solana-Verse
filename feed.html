@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZonatOne - Feed</title>
+    <meta name="description" content="Your ZonatOne social feed">
+    <link rel="stylesheet" href="styles-new.css">
+    <link rel="stylesheet" href="feed.css">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="navbar-left">
+                <div class="logo-small">
+                    <span class="logo-icon">Z</span>
+                    <span class="logo-text">ZonatOne</span>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search ZonatOne..." />
+                </div>
+            </div>
+            <div class="navbar-right">
+                <div class="user-menu">
+                    <img id="userAvatar" src="" alt="User" class="user-avatar">
+                    <span id="username">Loading...</span>
+                </div>
+                <button id="logoutBtn" class="btn-logout">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="feed-container">
+        <!-- Sidebar Left -->
+        <aside class="sidebar-left">
+            <div class="profile-card">
+                <img id="profileAvatar" src="" alt="Profile" class="profile-avatar">
+                <h3 id="profileUsername">Loading...</h3>
+                <p class="wallet-address" id="profileWallet">Loading...</p>
+                <div class="profile-stats">
+                    <div class="stat">
+                        <span class="stat-number">142</span>
+                        <span class="stat-label">Posts</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">1.2K</span>
+                        <span class="stat-label">Friends</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">856</span>
+                        <span class="stat-label">Likes</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Feed -->
+        <main class="feed">
+            <!-- Create Post -->
+            <div class="create-post-card">
+                <img id="createPostAvatar" src="" alt="User" class="create-post-avatar">
+                <input type="text" placeholder="What's on your mind?" id="createPostInput" readonly>
+            </div>
+
+            <!-- Posts -->
+            <div id="postsContainer">
+                <!-- Sample Post -->
+                <div class="post-card">
+                    <div class="post-header">
+                        <img id="postAuthorAvatar" src="" alt="Author" class="post-avatar">
+                        <div class="post-author-info">
+                            <h4 id="postAuthorName">Loading...</h4>
+                            <p class="post-time">Just now</p>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p>Just joined ZonatOne! This Web3 social platform is amazing! 🚀</p>
+                    </div>
+                    <div class="post-actions">
+                        <button class="post-action-btn">
+                            <span>🤍</span> Like
+                        </button>
+                        <button class="post-action-btn">
+                            <span>💬</span> Comment
+                        </button>
+                        <button class="post-action-btn">
+                            <span>📤</span> Share
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Sidebar Right -->
+        <aside class="sidebar-right">
+            <div class="suggestions-card">
+                <h3>Friend Suggestions</h3>
+                <div class="suggestion-item">
+                    <img src="https://i.pravatar.cc/150?img=12" alt="User" class="suggestion-avatar">
+                    <div class="suggestion-info">
+                        <h4>CryptoKing</h4>
+                        <p>Web3 Enthusiast</p>
+                    </div>
+                    <button class="btn-follow">Follow</button>
+                </div>
+                <div class="suggestion-item">
+                    <img src="https://i.pravatar.cc/150?img=5" alt="User" class="suggestion-avatar">
+                    <div class="suggestion-info">
+                        <h4>Web3Queen</h4>
+                        <p>NFT Collector</p>
+                    </div>
+                    <button class="btn-follow">Follow</button>
+                </div>
+                <div class="suggestion-item">
+                    <img src="https://i.pravatar.cc/150?img=33" alt="User" class="suggestion-avatar">
+                    <div class="suggestion-info">
+                        <h4>NFTCollector</h4>
+                        <p>Blockchain Dev</p>
+                    </div>
+                    <button class="btn-follow">Follow</button>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="feed.js"></script>
+</body>
+
+</html>
