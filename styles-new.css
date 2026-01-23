@@ -139,6 +139,13 @@ body {
     animation: fadeInDown 0.6s ease;
 }
 
+.logo-container-card {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .logo {
     display: flex;
     align-items: center;
@@ -168,6 +175,12 @@ body {
     margin-bottom: var(--space-md);
 }
 
+.logo-image-card {
+    height: 140px;
+    width: auto;
+    filter: drop-shadow(0 0 30px rgba(0, 255, 65, 0.5));
+}
+
 .logo-text {
     font-size: 32px;
     font-weight: 800;
@@ -181,6 +194,13 @@ body {
     color: var(--text-secondary);
     font-size: 14px;
     font-weight: 500;
+}
+
+.tagline-card {
+    color: var(--text-secondary);
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: var(--space-sm);
 }
 
 /* ==================== CARD ==================== */
@@ -221,7 +241,7 @@ body {
 }
 
 .step h2 {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 700;
     margin-bottom: var(--space-md);
     text-align: center;
@@ -231,7 +251,7 @@ body {
 .step-description {
     text-align: center;
     color: var(--text-secondary);
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-xl);
     font-size: 15px;
     line-height: 1.5;
 }
