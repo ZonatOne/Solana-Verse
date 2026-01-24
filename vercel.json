@@ -1,0 +1,13 @@
+{
+    "buildCommand": "cd solanaverse && npm run build",
+    "outputDirectory": "solanaverse/.next",
+    "devCommand": "cd solanaverse && npm run dev",
+    "installCommand": "cd solanaverse && npm install",
+    "framework": "nextjs",
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "/solanaverse/$1"
+        }
+    ]
+}
