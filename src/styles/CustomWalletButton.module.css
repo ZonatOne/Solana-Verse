@@ -1,0 +1,18 @@
+.walletButtonWrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.phantomIcon {
+    position: absolute;
+    left: 12px;
+    width: 24px;
+    height: 24px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.walletButton {
+    padding-left: 44px !important;
+}

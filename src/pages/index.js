@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { useWallet } from '@solana/wallet-adapter-react'
-import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
+import CustomWalletButton from '@/components/CustomWalletButton'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import styles from '@/styles/Home.module.css'
@@ -35,11 +35,11 @@ export default function Home() {
         <main className={styles.main}>
           <div className={styles.hero}>
             <div className={styles.logoLarge}>
-              <span className={styles.logoIcon}>◆</span>
+              <img src="/zonatone-logo.png" alt="ZonatOne" className={styles.logoImage} />
             </div>
 
             <h1 className={styles.title}>
-              Welcome to <span className={styles.gradient}>SolanaVerse</span>
+              Welcome to <span className={styles.gradient}>ZonatOne</span>
             </h1>
 
             <p className={styles.subtitle}>
@@ -61,12 +61,12 @@ export default function Home() {
               <div className={styles.feature}>
                 <div className={styles.featureIcon}>⚡</div>
                 <h3>Lightning Fast</h3>
-                <p>Powered by Solana. Instant interactions.</p>
+                <p>Powered by ZonatOne. Instant interactions.</p>
               </div>
             </div>
 
             <div className={styles.ctaSection}>
-              <WalletMultiButton className={styles.connectBtn} />
+              <CustomWalletButton className={styles.connectBtn} />
               <p className={styles.ctaHint}>
                 No balance required • Just connect to start
               </p>

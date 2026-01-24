@@ -83,6 +83,13 @@
   filter: drop-shadow(0 0 30px rgba(153, 69, 255, 0.5));
 }
 
+.logoImage {
+  width: 400px;
+  height: auto;
+  filter: drop-shadow(0 0 30px rgba(153, 69, 255, 0.3));
+  animation: glow 3s ease-in-out infinite;
+}
+
 .title {
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 800;
