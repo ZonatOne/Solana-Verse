@@ -58,8 +58,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 2rem;
+  justify-content: flex-start;
+  padding: 4rem 2rem 2rem;
   position: relative;
   z-index: 1;
 }
@@ -70,7 +70,7 @@
 }
 
 .logoLarge {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   animation: glow 3s ease-in-out infinite;
 }
 
