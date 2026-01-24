@@ -64,6 +64,73 @@
     justify-content: space-between;
 }
 
+.leftActions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.imageButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    color: var(--accent-primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.imageButton:hover {
+    background: var(--bg-tertiary);
+    border-color: var(--accent-primary);
+}
+
+.imageButton svg {
+    flex-shrink: 0;
+}
+
+.fileInput {
+    display: none;
+}
+
+.imagePreview {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 0.5rem;
+}
+
+.imagePreview img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.removeImage {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(255, 71, 87, 0.9);
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.removeImage:hover {
+    background: #ff4757;
+}
+
 .charCount {
     font-size: 0.85rem;
     color: var(--text-muted);
