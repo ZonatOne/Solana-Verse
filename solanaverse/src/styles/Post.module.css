@@ -1,0 +1,245 @@
+.post {
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.post:hover {
+    border-color: var(--border-glow);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.authorLink {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    flex-shrink: 0;
+}
+
+.avatarImage {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.authorInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.displayName {
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.adminBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: linear-gradient(135deg, #8a2be2, #9b59b6);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.adminBadge svg {
+    width: 12px;
+    height: 12px;
+    color: #FFD700;
+}
+
+.adminLabel {
+    font-size: 10px;
+    margin-left: 4px;
+    opacity: 0.8;
+}
+
+.address {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.time {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.content {
+    margin-bottom: 1rem;
+}
+
+.content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-top: 1rem;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.actionBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.actionBtn:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.actionBtn.liked {
+    color: #ff4757;
+}
+
+.actionBtn.liked:hover {
+    color: #ff6b7a;
+}
+
+.deleteBtn {
+    margin-left: auto;
+}
+
+.deleteBtn:hover {
+    color: #ff4757;
+}
+
+/* Comments Section */
+.commentsSection {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.commentForm {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.commentInput {
+    flex: 1;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.commentInput::placeholder {
+    color: var(--text-muted);
+}
+
+.commentInput:focus {
+    border-color: var(--accent-primary);
+}
+
+.commentSubmit {
+    background: var(--accent-gradient);
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.commentSubmit:hover {
+    transform: translateY(-1px);
+}
+
+.comments {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.comment {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: var(--bg-tertiary);
+    border-radius: 12px;
+}
+
+.commentAvatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    flex-shrink: 0;
+}
+
+.commentContent {
+    flex: 1;
+}
+
+.commentAuthor {
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 0.25rem;
+    display: block;
+}
+
+.commentContent p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}

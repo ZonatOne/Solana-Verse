@@ -1,0 +1,229 @@
+.page {
+    min-height: 100vh;
+    background: var(--bg-primary);
+}
+
+.main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 100px 24px 40px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.header h1 {
+    font-size: 42px;
+    font-weight: 800;
+    margin: 0 0 12px 0;
+    background: linear-gradient(135deg, var(--primary-color), #9b59b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.header p {
+    font-size: 18px;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.connectPrompt {
+    max-width: 500px;
+    margin: 60px auto;
+    text-align: center;
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 20px;
+    padding: 48px 32px;
+}
+
+.promptIcon {
+    font-size: 64px;
+    margin-bottom: 24px;
+}
+
+.connectPrompt h2 {
+    font-size: 28px;
+    margin: 0 0 12px 0;
+    color: var(--text-primary);
+}
+
+.connectPrompt p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin: 0 0 24px 0;
+}
+
+.connectBtn {
+    margin: 0 auto;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 32px;
+    align-items: start;
+}
+
+.infoSection {
+    position: sticky;
+    top: 100px;
+}
+
+.infoSection h2 {
+    font-size: 28px;
+    margin: 0 0 24px 0;
+    color: var(--text-primary);
+}
+
+.steps {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.step {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.step:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.stepNumber {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, var(--primary-color), #9b59b6);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.stepContent h3 {
+    font-size: 16px;
+    margin: 0 0 4px 0;
+    color: var(--text-primary);
+}
+
+.stepContent p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.benefits {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.benefits h3 {
+    font-size: 18px;
+    margin: 0 0 16px 0;
+    color: var(--text-primary);
+}
+
+.benefits ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.benefits li {
+    padding: 10px 0;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.formSection {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 32px;
+}
+
+.termsSection {
+    max-width: 900px;
+    margin: 48px auto 0;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 32px;
+}
+
+.termsSection h3 {
+    font-size: 20px;
+    margin: 0 0 16px 0;
+    color: var(--text-primary);
+}
+
+.terms {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.terms li {
+    padding: 12px 0;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.terms li:last-child {
+    border-bottom: none;
+}
+
+.footer {
+    text-align: center;
+    padding: 40px 24px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+@media (max-width: 1024px) {
+    .content {
+        grid-template-columns: 1fr;
+    }
+
+    .infoSection {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 32px;
+    }
+
+    .header p {
+        font-size: 16px;
+    }
+
+    .formSection {
+        padding: 24px;
+    }
+
+    .termsSection {
+        padding: 24px;
+    }
+}

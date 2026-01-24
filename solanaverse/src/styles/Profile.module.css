@@ -1,0 +1,137 @@
+.page {
+    min-height: 100vh;
+    background: var(--bg-primary);
+}
+
+.main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.editSection {
+    margin-bottom: 2rem;
+}
+
+.editBtn {
+    width: 100%;
+    padding: 1rem;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.editBtn:hover {
+    border-color: var(--accent-primary);
+}
+
+.editForm {
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 1.5rem;
+}
+
+.editForm h3 {
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.input,
+.textarea {
+    width: 100%;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1rem;
+    color: var(--text-primary);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+    color: var(--text-muted);
+}
+
+.input:focus,
+.textarea:focus {
+    border-color: var(--accent-primary);
+}
+
+.textarea {
+    resize: none;
+}
+
+.editActions {
+    display: flex;
+    gap: 1rem;
+}
+
+.saveBtn {
+    flex: 1;
+    padding: 0.875rem;
+    background: var(--accent-gradient);
+    color: white;
+    font-weight: 600;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.saveBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+}
+
+.cancelBtn {
+    padding: 0.875rem 1.5rem;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.cancelBtn:hover {
+    border-color: var(--text-muted);
+    color: var(--text-primary);
+}
+
+.postsSection {
+    margin-top: 2rem;
+}
+
+.sectionTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.posts {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.empty {
+    text-align: center;
+    padding: 3rem;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    color: var(--text-muted);
+}
+
+@media (max-width: 600px) {
+    .main {
+        padding: 1rem;
+    }
+}
