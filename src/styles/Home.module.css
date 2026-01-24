@@ -70,7 +70,7 @@
 }
 
 .logoLarge {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   animation: glow 3s ease-in-out infinite;
 }
 
@@ -84,7 +84,8 @@
 }
 
 .logoImage {
-  width: 400px;
+  width: 600px;
+  max-width: 90vw;
   height: auto;
   filter: drop-shadow(0 0 30px rgba(153, 69, 255, 0.3));
   animation: glow 3s ease-in-out infinite;
