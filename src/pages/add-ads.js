@@ -4,6 +4,7 @@ import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 import { useRouter } from 'next/router'
 import Navbar from '@/components/Navbar'
 import AdForm from '@/components/AdForm'
+import Footer from '@/components/Footer'
 import styles from '@/styles/AddAds.module.css'
 
 export default function AddAds() {
@@ -107,9 +108,7 @@ export default function AddAds() {
                     </div>
                 </main>
 
-                <footer className={styles.footer}>
-                    <p>Built with 💜 on Solana</p>
-                </footer>
+                <Footer />
             </div>
         </>
     )

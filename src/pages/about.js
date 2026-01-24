@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 import styles from '@/styles/About.module.css'
 
 export default function About() {
@@ -149,9 +150,7 @@ export default function About() {
                     </div>
                 </main>
 
-                <footer className={styles.footer}>
-                    <p>Built with 💜 on Solana</p>
-                </footer>
+                <Footer />
             </div>
         </>
     )

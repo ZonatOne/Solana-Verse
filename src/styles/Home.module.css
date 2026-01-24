@@ -191,11 +191,119 @@
 }
 
 .footer {
-  text-align: center;
-  padding: 2rem;
-  color: var(--text-muted);
+  padding: 3rem 2rem 2rem;
+  color: var(--text-secondary);
   position: relative;
   z-index: 1;
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+}
+
+.footerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3rem;
+  margin-bottom: 2rem;
+}
+
+.footerBrand {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footerLogo {
+  width: 200px;
+  height: auto;
+}
+
+.footerTagline {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.footerLinks {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.footerSection h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.footerSection a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footerSection a:hover {
+  color: var(--accent-primary);
+}
+
+.footerSection a svg {
+  flex-shrink: 0;
+}
+
+.donationAddress {
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.donationLabel {
+  font-weight: 600;
+  color: var(--accent-primary);
+  margin-right: 0.5rem;
+}
+
+.donationAddress code {
+  background: var(--bg-tertiary);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: var(--text-primary);
+  word-break: break-all;
+}
+
+.footerBottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.footerBottom p {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .footerContent {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footerLinks {
+    grid-template-columns: 1fr;
+  }
+
+  .footerLogo {
+    width: 150px;
+  }
 }
 
 @media (max-width: 768px) {
