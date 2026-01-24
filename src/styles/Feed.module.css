@@ -8,7 +8,7 @@
     margin: 0 auto;
     padding: 100px 2rem 2rem;
     display: grid;
-    grid-template-columns: 280px minmax(500px, 650px) 380px;
+    grid-template-columns: 280px minmax(480px, 620px) 420px;
     gap: 2rem;
     align-items: start;
 }
@@ -166,7 +166,7 @@
 @media (max-width: 1400px) {
     .main {
         max-width: 1400px;
-        grid-template-columns: 260px minmax(450px, 600px) 360px;
+        grid-template-columns: 260px minmax(420px, 580px) 400px;
         gap: 1.5rem;
     }
 }
@@ -174,7 +174,7 @@
 @media (max-width: 1200px) {
     .main {
         /* Hide left sidebar on medium screens, keep main + right */
-        grid-template-columns: minmax(400px, 600px) 360px;
+        grid-template-columns: minmax(380px, 580px) 400px;
         padding: 100px 1.5rem 2rem;
     }
 }
