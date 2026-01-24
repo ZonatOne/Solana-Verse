@@ -9,9 +9,13 @@ export default function AdForm({ onSuccess }) {
     const { connection } = useConnection()
     const { createAd, ADMIN_WALLET, isAdmin } = useSocial()
 
+    const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     const [image, setImage] = useState('')
     const [targetUrl, setTargetUrl] = useState('')
+    const [twitterLink, setTwitterLink] = useState('')
+    const [telegramLink, setTelegramLink] = useState('')
+    const [discordLink, setDiscordLink] = useState('')
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
     const [success, setSuccess] = useState(false)
@@ -68,13 +72,17 @@ export default function AdForm({ onSuccess }) {
             }
 
             // Create ad (admin posts for free, users after payment)
-            const ad = createAd(content, image, targetUrl)
+            const ad = createAd(title, content, image, targetUrl, twitterLink, telegramLink, discordLink)
 
             if (ad) {
                 setSuccess(true)
+                setTitle('')
                 setContent('')
                 setImage('')
                 setTargetUrl('')
+                setTwitterLink('')
+                setTelegramLink('')
+                setDiscordLink('')
 
                 if (onSuccess) {
                     onSuccess(ad)
@@ -118,6 +126,20 @@ export default function AdForm({ onSuccess }) {
             </div>
 
             <form onSubmit={handleSubmit} className={styles.form}>
+                <div className={styles.formGroup}>
+                    <label htmlFor="title">Airdrop Title *</label>
+                    <input
+                        type="text"
+                        id="title"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        placeholder="e.g., Konnex Airdrop Details"
+                        maxLength={100}
+                        className={styles.input}
+                        required
+                    />
+                </div>
+
                 <div className={styles.formGroup}>
                     <label htmlFor="content">Ad Content *</label>
                     <textarea
@@ -166,6 +188,47 @@ export default function AdForm({ onSuccess }) {
                         className={styles.input}
                     />
                     <small>Where users will be redirected when clicking your ad</small>
+                </div>
+
+                <div className={styles.socialLinksSection}>
+                    <h4>Social Media Links (Optional)</h4>
+                    <p className={styles.sectionDesc}>Add social media tasks for your airdrop campaign</p>
+
+                    <div className={styles.formGroup}>
+                        <label htmlFor="twitterLink">Twitter Link</label>
+                        <input
+                            type="url"
+                            id="twitterLink"
+                            value={twitterLink}
+                            onChange={(e) => setTwitterLink(e.target.value)}
+                            placeholder="https://twitter.com/yourproject"
+                            className={styles.input}
+                        />
+                    </div>
+
+                    <div className={styles.formGroup}>
+                        <label htmlFor="telegramLink">Telegram Link</label>
+                        <input
+                            type="url"
+                            id="telegramLink"
+                            value={telegramLink}
+                            onChange={(e) => setTelegramLink(e.target.value)}
+                            placeholder="https://t.me/yourproject"
+                            className={styles.input}
+                        />
+                    </div>
+
+                    <div className={styles.formGroup}>
+                        <label htmlFor="discordLink">Discord Link</label>
+                        <input
+                            type="url"
+                            id="discordLink"
+                            value={discordLink}
+                            onChange={(e) => setDiscordLink(e.target.value)}
+                            placeholder="https://discord.gg/yourproject"
+                            className={styles.input}
+                        />
+                    </div>
                 </div>
 
                 {error && (

@@ -49,6 +49,13 @@
     object-fit: cover;
 }
 
+.title {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 10px 0;
+    color: var(--text-primary);
+}
+
 .content {
     margin-bottom: 10px;
 }
@@ -58,6 +65,63 @@
     font-size: 14px;
     line-height: 1.5;
     color: var(--text-primary);
+}
+
+.readMoreBtn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 6px;
+    padding: 0;
+    transition: opacity 0.2s;
+}
+
+.readMoreBtn:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+.socialLinks {
+    margin: 12px 0;
+    padding: 12px;
+    background: rgba(138, 43, 226, 0.05);
+    border-radius: 8px;
+}
+
+.tasksLabel {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.socialButtons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.socialBtn {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.socialBtn:hover {
+    background: var(--bg-glass-light);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 .footer {

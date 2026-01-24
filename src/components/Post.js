@@ -155,12 +155,20 @@ export default function Post({ post }) {
                             return (
                                 <div key={comment.id} className={styles.comment}>
                                     <Link href={`/profile/${comment.author}`}>
-                                        <div
-                                            className={styles.commentAvatar}
-                                            style={{ backgroundColor: generateAvatar(comment.author) }}
-                                        >
-                                            {comment.author.slice(0, 2)}
-                                        </div>
+                                        {commentAuthor.customAvatar ? (
+                                            <img
+                                                src={commentAuthor.customAvatar}
+                                                alt="Avatar"
+                                                className={styles.commentAvatarImage}
+                                            />
+                                        ) : (
+                                            <div
+                                                className={styles.commentAvatar}
+                                                style={{ backgroundColor: generateAvatar(comment.author) }}
+                                            >
+                                                {comment.author.slice(0, 2)}
+                                            </div>
+                                        )}
                                     </Link>
                                     <div className={styles.commentContent}>
                                         <span className={styles.commentAuthor}>

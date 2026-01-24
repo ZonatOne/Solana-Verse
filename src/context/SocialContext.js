@@ -235,7 +235,7 @@ export function SocialProvider({ children }) {
     }
 
     // Create advertisement (paid)
-    const createAd = (content, image, targetUrl = null) => {
+    const createAd = (title, content, image, targetUrl = null, twitterLink = null, telegramLink = null, discordLink = null) => {
         if (!publicKey || !content.trim()) return null
 
         const address = publicKey.toString()
@@ -246,9 +246,13 @@ export function SocialProvider({ children }) {
         const newAd = {
             id: generateId(),
             author: address,
+            title: title?.trim() || null,
             content: content.trim(),
             image,
             targetUrl,
+            twitterLink,
+            telegramLink,
+            discordLink,
             status: isAdminAd ? 'approved' : 'pending', // Admin ads auto-approved
             createdAt: Date.now(),
             expiresAt: Date.now() + AD_DURATION,
