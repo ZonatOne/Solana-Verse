@@ -42,7 +42,7 @@ export default function Feed() {
                 <main className={styles.main}>
                     <aside className={styles.sidebar}>
                         <div className={styles.sidebarCard}>
-                            <h3>🔥 Trending Topics</h3>
+                            <h3 className={styles.sidebarTitle}>Trending Topics</h3>
                             <ul className={styles.trendingList}>
                                 <li>#SolanaVerse</li>
                                 <li>#Web3Social</li>
@@ -53,7 +53,7 @@ export default function Feed() {
                         </div>
 
                         <div className={styles.sidebarCard}>
-                            <h3>✨ Quick Tips</h3>
+                            <h3 className={styles.sidebarTitle}>Quick Tips</h3>
                             <p>Connect your Phantom wallet to post, like, and interact with others in the metaverse!</p>
                         </div>
                     </aside>
@@ -88,7 +88,7 @@ export default function Feed() {
 
                     <aside className={styles.rightSidebar}>
                         <div className={styles.sidebarCard}>
-                            <h3>🎁 Top Airdrop</h3>
+                            <h3 className={styles.sidebarTitle}>Top Airdrop</h3>
                             <p className={styles.airdropDesc}>Sponsored ads and announcements</p>
                         </div>
 

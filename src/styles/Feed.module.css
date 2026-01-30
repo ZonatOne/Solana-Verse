@@ -4,11 +4,11 @@
 }
 
 .main {
-    max-width: 1600px;
+    max-width: 1800px;
     margin: 0 auto;
     padding: 100px 2rem 2rem;
     display: grid;
-    grid-template-columns: 280px minmax(500px, 640px) 460px;
+    grid-template-columns: 320px minmax(600px, 800px) 580px;
     gap: 2rem;
     align-items: start;
 }
@@ -113,6 +113,20 @@
     text-align: center;
     margin: 0;
     padding: 1rem 0;
+}
+
+.sidebarTitle {
+    display: inline-block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    background:
+        linear-gradient(var(--bg-glass), var(--bg-glass)) padding-box,
+        linear-gradient(135deg, #14F195, #9945FF) border-box;
+    color: var(--text-primary);
 }
 
 .sidebarCard h3 {
