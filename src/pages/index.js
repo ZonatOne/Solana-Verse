@@ -34,42 +34,53 @@ export default function Home() {
 
         <main className={styles.main}>
           <div className={styles.hero}>
-            <div className={styles.logoLarge}>
-              <img src="/zonatone-logo.png" alt="ZonatOne" className={styles.logoImage} />
-            </div>
-
-            <h1 className={styles.title}>
-              Welcome to <span className={styles.gradient}>ZonatOne</span>
-            </h1>
-
-            <p className={styles.subtitle}>
-              The next generation of social media, powered by Web3.
-              Connect your Phantom wallet and join the decentralized revolution.
-            </p>
-
-            <div className={styles.features}>
-              <div className={styles.feature}>
-                <div className={styles.featureIcon}>🔐</div>
-                <h3>Wallet Login</h3>
-                <p>No passwords needed. Your wallet is your identity.</p>
+            <div className={styles.heroContent}>
+              <div className={styles.logoLarge}>
+                <img src="/zonatone-logo.png" alt="ZonatOne" className={styles.logoImage} />
               </div>
-              <div className={styles.feature}>
-                <div className={styles.featureIcon}>🌐</div>
-                <h3>Decentralized</h3>
-                <p>Own your data. Control your social experience.</p>
-              </div>
-              <div className={styles.feature}>
-                <div className={styles.featureIcon}>⚡</div>
-                <h3>Lightning Fast</h3>
-                <p>Powered by ZonatOne. Instant interactions.</p>
-              </div>
-            </div>
 
-            <div className={styles.ctaSection}>
-              <CustomWalletButton className={styles.connectBtn} />
-              <p className={styles.ctaHint}>
-                No balance required • Just connect to start
+              <h1 className={styles.title}>
+                Welcome to <span className={styles.gradient}>ZonatOne</span>
+              </h1>
+
+              <p className={styles.subtitle}>
+                The next generation of social media, powered by Web3.
+                Connect your Phantom wallet and join the decentralized revolution.
               </p>
+
+              <div className={styles.features}>
+                <div className={styles.feature}>
+                  <div className={styles.featureIcon}>🔐</div>
+                  <h3>Wallet Login</h3>
+                  <p>No passwords needed. Your wallet is your identity.</p>
+                </div>
+                <div className={styles.feature}>
+                  <div className={styles.featureIcon}>🌐</div>
+                  <h3>Decentralized</h3>
+                  <p>Own your data. Control your social experience.</p>
+                </div>
+                <div className={styles.feature}>
+                  <div className={styles.featureIcon}>⚡</div>
+                  <h3>Lightning Fast</h3>
+                  <p>Powered by ZonatOne. Instant interactions.</p>
+                </div>
+              </div>
+
+              <div className={styles.ctaSection}>
+                <CustomWalletButton className={styles.connectBtn} />
+                <p className={styles.ctaHint}>
+                  No balance required • Just connect to start
+                </p>
+              </div>
+            </div>
+
+            {/* Character Illustration */}
+            <div className={styles.characterWrapper}>
+              <img
+                src="/character.png"
+                alt="ZonatOne Character"
+                className={styles.characterImage}
+              />
             </div>
           </div>
 
