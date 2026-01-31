@@ -237,3 +237,77 @@
         transform: rotate(360deg);
     }
 }
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    .createPost {
+        padding: 1rem;
+        border-radius: 16px;
+        margin-bottom: 1rem;
+        gap: 0.75rem;
+    }
+
+    .avatar,
+    .avatarImage {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+    }
+
+    .form {
+        gap: 0.75rem;
+    }
+
+    .textarea {
+        padding: 0.75rem;
+        font-size: 0.95rem;
+        border-radius: 10px;
+        min-height: 80px;
+    }
+
+    .actions {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: stretch;
+    }
+
+    .leftActions {
+        justify-content: space-between;
+        gap: 0.5rem;
+    }
+
+    .imageButton,
+    .videoButton {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+        flex: 1;
+        justify-content: center;
+    }
+
+    .charCount {
+        font-size: 0.8rem;
+        text-align: center;
+    }
+
+    .postButton {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+        width: 100%;
+    }
+
+    .imagePreview img,
+    .videoPreview video {
+        max-height: 200px;
+    }
+
+    .removeImage,
+    .removeVideo {
+        padding: 4px 8px;
+        font-size: 12px;
+    }
+
+    .uploadProgress {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.85rem;
+    }
+}

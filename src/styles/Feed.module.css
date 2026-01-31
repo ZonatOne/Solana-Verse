@@ -180,7 +180,7 @@
 @media (max-width: 1400px) {
     .main {
         max-width: 1400px;
-        grid-template-columns: 260px minmax(440px, 600px) 440px;
+        grid-template-columns: 260px minmax(440px, 600px) 400px;
         gap: 1.5rem;
     }
 }
@@ -188,37 +188,97 @@
 @media (max-width: 1200px) {
     .main {
         /* Hide left sidebar on medium screens, keep main + right */
-        grid-template-columns: minmax(400px, 600px) 420px;
-        padding: 100px 1.5rem 2rem;
+        grid-template-columns: 1fr 350px;
+        padding: 90px 1.5rem 2rem;
+    }
+
+    .sidebar {
+        display: none;
     }
 }
 
 @media (max-width: 900px) {
     .main {
-        /* Single column on mobile */
+        /* Single column on tablet/mobile */
         grid-template-columns: 1fr;
         padding: 80px 1rem 1rem;
+        gap: 1rem;
     }
 
     .sidebar {
-        order: -1;
-        flex-direction: row;
-        overflow-x: auto;
+        display: none;
+    }
+
+    .rightSidebar {
+        order: 1;
+    }
+
+    .feedHeader h1 {
+        font-size: 1.5rem;
     }
 
     .sidebarCard,
     .adsSection {
-        min-width: 250px;
+        padding: 1rem;
+        border-radius: 16px;
+    }
+
+    .sidebarTitle {
+        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
     }
 }
 
 @media (max-width: 600px) {
     .main {
-        padding: 80px 0.5rem 1rem;
+        padding: 70px 0.75rem 1rem;
+        gap: 0.75rem;
+    }
+
+    .feedHeader {
+        margin-bottom: 1rem;
+        padding: 0 0.25rem;
+    }
+
+    .feedHeader h1 {
+        font-size: 1.3rem;
+    }
+
+    .feedHeader p {
+        font-size: 0.85rem;
+    }
+
+    .posts {
         gap: 1rem;
     }
 
-    .feedContainer {
-        padding: 0 0.5rem;
+    .empty {
+        padding: 2rem 1rem;
+        border-radius: 16px;
+    }
+
+    .emptyIcon {
+        font-size: 3rem;
+    }
+
+    .empty h3 {
+        font-size: 1.2rem;
+    }
+
+    .sidebarCard,
+    .adsSection {
+        padding: 0.75rem;
+        border-radius: 12px;
+    }
+
+    .sidebarTitle {
+        font-size: 0.9rem;
+        padding: 0.3rem 0.6rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .trendingList li {
+        padding: 0.5rem 0;
+        font-size: 0.9rem;
     }
 }
