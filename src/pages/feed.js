@@ -7,6 +7,7 @@ import CreatePost from '@/components/CreatePost'
 import Post from '@/components/Post'
 import AdminPostPanel from '@/components/AdminPostPanel'
 import AdCard from '@/components/AdCard'
+import SponsorSection from '@/components/SponsorSection'
 import ReelsSection from '@/components/ReelsSection'
 import { useSocial } from '@/context/SocialContext'
 import styles from '@/styles/Feed.module.css'
@@ -57,6 +58,8 @@ export default function Feed() {
                             <h3 className={styles.sidebarTitle}>Quick Tips</h3>
                             <p>Connect your Phantom wallet to post, like, and interact with others in the metaverse!</p>
                         </div>
+
+                        <SponsorSection />
                     </aside>
 
                     <div className={styles.feedContainer}>
