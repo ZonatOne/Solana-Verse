@@ -83,6 +83,9 @@ export default function Post({ post }) {
                 {post.image && (
                     <img src={post.image} alt="Post image" className={styles.image} />
                 )}
+                {post.video && (
+                    <video src={post.video} controls className={styles.video} />
+                )}
             </div>
 
             <div className={styles.actions}>

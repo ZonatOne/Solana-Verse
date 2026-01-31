@@ -54,7 +54,13 @@ export function SocialProvider({ children }) {
     // Save data to localStorage whenever it changes
     useEffect(() => {
         if (!loading) {
-            localStorage.setItem('solanaverse-posts', JSON.stringify(posts))
+            try {
+                localStorage.setItem('solanaverse-posts', JSON.stringify(posts))
+            } catch (e) {
+                if (e.name === 'QuotaExceededError') {
+                    console.warn('localStorage quota exceeded for posts. Consider reducing video sizes.')
+                }
+            }
         }
     }, [posts, loading])
 
@@ -100,8 +106,8 @@ export function SocialProvider({ children }) {
     }
 
     // Create a new post
-    const createPost = (content, image = null) => {
-        if (!publicKey || !content.trim()) return null
+    const createPost = (content, image = null, video = null) => {
+        if (!publicKey || (!content.trim() && !image && !video)) return null
 
         const address = publicKey.toString()
         const newPost = {
@@ -109,6 +115,7 @@ export function SocialProvider({ children }) {
             author: address,
             content: content.trim(),
             image,
+            video,
             likes: [],
             comments: [],
             createdAt: Date.now()
@@ -215,6 +222,12 @@ export function SocialProvider({ children }) {
     // Get feed posts (all posts, sorted by date)
     const getFeedPosts = () => {
         return [...posts].sort((a, b) => b.createdAt - a.createdAt)
+    }
+
+    // Get video posts only (for reels)
+    const getVideoPosts = () => {
+        return posts.filter(post => post.video)
+            .sort((a, b) => b.createdAt - a.createdAt)
     }
 
     // Check if address is admin
@@ -336,6 +349,7 @@ export function SocialProvider({ children }) {
             isFollowing,
             getUserPosts,
             getFeedPosts,
+            getVideoPosts,
             shortenAddress,
             generateAvatar,
             // Admin functions

@@ -7,6 +7,7 @@ import CreatePost from '@/components/CreatePost'
 import Post from '@/components/Post'
 import AdminPostPanel from '@/components/AdminPostPanel'
 import AdCard from '@/components/AdCard'
+import ReelsSection from '@/components/ReelsSection'
 import { useSocial } from '@/context/SocialContext'
 import styles from '@/styles/Feed.module.css'
 
@@ -103,6 +104,8 @@ export default function Feed() {
                                 <p className={styles.emptyAds}>No ads available yet</p>
                             </div>
                         )}
+
+                        <ReelsSection />
                     </aside>
                 </main>
             </div>
