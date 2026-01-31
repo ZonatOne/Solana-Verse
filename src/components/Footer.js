@@ -4,8 +4,8 @@ export default function Footer() {
     return (
         <footer className={styles.footer}>
             <div className={styles.footerContent}>
-                <div className={styles.footerBrand}>
-                    <img src="/zonatone-logo.png" alt="ZonatOne" className={styles.footerLogo} />
+                <div className={styles.footerSection}>
+                    <h4>ZonatOne</h4>
                     <p className={styles.footerTagline}>Built with 💜 on ZonatOne</p>
                 </div>
 
@@ -34,7 +34,7 @@ export default function Footer() {
                         </div>
                         <div className={styles.donationAddress}>
                             <span className={styles.donationLabel}>SOL:</span>
-                            <code>9i7m4nS59y2X4EQDegGbCZaSQV5TCp35XLfKWQQMzHrW</code>
+                            <code>4zvTSNkeA8DXtWySsSRaNdvRbBUdawTEfn1CoFWW8hxN</code>
                         </div>
                     </div>
                 </div>

@@ -106,7 +106,7 @@
 
 .logoLarge {
   margin-top: -100px;
-  margin-bottom: -80px;
+  margin-bottom: -120px;
   animation: glow 3s ease-in-out infinite;
 }
 
@@ -130,9 +130,24 @@
 .title {
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 800;
-  margin-top: 0;
+  margin-top: 2rem;
   margin-bottom: 1.5rem;
   line-height: 1.1;
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 650px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #FFD700, #FFA500, #FFD700, transparent);
+  border-radius: 2px;
 }
 
 .gradient {
@@ -269,8 +284,18 @@
   height: auto;
 }
 
+.footerBrandName {
+  font-size: 2rem;
+  font-weight: 700;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 0.5rem 0;
+}
+
 .footerTagline {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--text-secondary);
   margin: 0;
 }
@@ -316,23 +341,27 @@
 }
 
 .donationAddress {
-  margin-bottom: 0.75rem;
-  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
 }
 
 .donationLabel {
   font-weight: 600;
   color: var(--accent-primary);
-  margin-right: 0.5rem;
+  min-width: 35px;
 }
 
 .donationAddress code {
   background: var(--bg-tertiary);
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.75rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.65rem;
   color: var(--text-primary);
   word-break: break-all;
+  border: 1px solid var(--border-color);
 }
 
 .footerBottom {

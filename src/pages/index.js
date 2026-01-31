@@ -35,10 +35,6 @@ export default function Home() {
         <main className={styles.main}>
           <div className={styles.hero}>
             <div className={styles.heroContent}>
-              <div className={styles.logoLarge}>
-                <img src="/zonatone-logo.png" alt="ZonatOne" className={styles.logoImage} />
-              </div>
-
               <h1 className={styles.title}>
                 Welcome to <span className={styles.gradient}>ZonatOne</span>
               </h1>
@@ -102,8 +98,8 @@ export default function Home() {
 
         <footer className={styles.footer}>
           <div className={styles.footerContent}>
-            <div className={styles.footerBrand}>
-              <img src="/zonatone-logo.png" alt="ZonatOne" className={styles.footerLogo} />
+            <div className={styles.footerSection}>
+              <h4>ZonatOne</h4>
               <p className={styles.footerTagline}>Built with 💜 on ZonatOne</p>
             </div>
 
@@ -132,7 +128,7 @@ export default function Home() {
                 </div>
                 <div className={styles.donationAddress}>
                   <span className={styles.donationLabel}>SOL:</span>
-                  <code>9i7m...9c40</code>
+                  <code>4zvTSNkeA8DXtWySsSRaNdvRbBUdawTEfn1CoFWW8hxN</code>
                 </div>
               </div>
             </div>
