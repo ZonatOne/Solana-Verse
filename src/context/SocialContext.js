@@ -35,44 +35,50 @@ export function SocialProvider({ children }) {
 
     // Load data from localStorage on mount
     useEffect(() => {
-        const savedPosts = localStorage.getItem('solanaverse-posts')
-        const savedUsers = localStorage.getItem('solanaverse-users')
-        const savedAds = localStorage.getItem('solanaverse-ads')
+        try {
+            const savedPosts = localStorage.getItem('solanaverse-posts')
+            const savedUsers = localStorage.getItem('solanaverse-users')
+            const savedAds = localStorage.getItem('solanaverse-ads')
 
-        if (savedPosts) {
-            setPosts(JSON.parse(savedPosts))
-        }
-        if (savedUsers) {
-            setUsers(JSON.parse(savedUsers))
-        }
-        if (savedAds) {
-            setAds(JSON.parse(savedAds))
+            if (savedPosts) setPosts(JSON.parse(savedPosts))
+            if (savedUsers) setUsers(JSON.parse(savedUsers))
+            if (savedAds) setAds(JSON.parse(savedAds))
+        } catch (e) {
+            console.error('Error loading data:', e)
         }
         setLoading(false)
     }, [])
 
-    // Save data to localStorage whenever it changes
+    // Save posts to localStorage
     useEffect(() => {
         if (!loading) {
             try {
                 localStorage.setItem('solanaverse-posts', JSON.stringify(posts))
             } catch (e) {
-                if (e.name === 'QuotaExceededError') {
-                    console.warn('localStorage quota exceeded for posts. Consider reducing video sizes.')
-                }
+                console.warn('Error saving posts:', e)
             }
         }
     }, [posts, loading])
 
+    // Save users to localStorage
     useEffect(() => {
         if (!loading) {
-            localStorage.setItem('solanaverse-users', JSON.stringify(users))
+            try {
+                localStorage.setItem('solanaverse-users', JSON.stringify(users))
+            } catch (e) {
+                console.warn('Error saving users:', e)
+            }
         }
     }, [users, loading])
 
+    // Save ads to localStorage
     useEffect(() => {
         if (!loading) {
-            localStorage.setItem('solanaverse-ads', JSON.stringify(ads))
+            try {
+                localStorage.setItem('solanaverse-ads', JSON.stringify(ads))
+            } catch (e) {
+                console.warn('Error saving ads:', e)
+            }
         }
     }, [ads, loading])
 
@@ -105,17 +111,17 @@ export function SocialProvider({ children }) {
         }
     }
 
-    // Create a new post
-    const createPost = (content, image = null, video = null) => {
-        if (!publicKey || (!content.trim() && !image && !video)) return null
+    // Create a new post (accepts URL from Rumahweb upload)
+    const createPost = (content, imageUrl = null, videoUrl = null) => {
+        if (!publicKey || (!content.trim() && !imageUrl && !videoUrl)) return null
 
         const address = publicKey.toString()
         const newPost = {
             id: generateId(),
             author: address,
             content: content.trim(),
-            image,
-            video,
+            image: imageUrl,
+            video: videoUrl,
             likes: [],
             comments: [],
             createdAt: Date.now()
@@ -247,13 +253,11 @@ export function SocialProvider({ children }) {
             .sort((a, b) => b.createdAt - a.createdAt)
     }
 
-    // Create advertisement (paid)
+    // Create advertisement
     const createAd = (title, content, image, targetUrl = null, twitterLink = null, telegramLink = null, discordLink = null) => {
         if (!publicKey || !content.trim()) return null
 
         const address = publicKey.toString()
-
-        // Auto-approve ads from admin, others need approval
         const isAdminAd = isAdmin(address)
 
         const newAd = {
@@ -266,7 +270,7 @@ export function SocialProvider({ children }) {
             twitterLink,
             telegramLink,
             discordLink,
-            status: isAdminAd ? 'approved' : 'pending', // Admin ads auto-approved
+            status: isAdminAd ? 'approved' : 'pending',
             createdAt: Date.now(),
             expiresAt: Date.now() + AD_DURATION,
             clicks: 0
@@ -298,13 +302,12 @@ export function SocialProvider({ children }) {
         const address = publicKey.toString()
 
         setAds(prev => prev.filter(ad => {
-            // Admin can delete any ad, users can only delete their own
             if (isAdmin(address)) return ad.id !== adId
             return !(ad.id === adId && ad.author === address)
         }))
     }
 
-    // Get active ads (approved and not expired)
+    // Get active ads
     const getActiveAds = () => {
         const now = Date.now()
         return ads.filter(ad =>

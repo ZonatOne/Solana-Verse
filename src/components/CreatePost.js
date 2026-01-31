@@ -1,61 +1,131 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useWallet } from '@solana/wallet-adapter-react'
 import { useSocial } from '@/context/SocialContext'
 import styles from '@/styles/CreatePost.module.css'
+
+// URL upload ke hosting Rumahweb
+const UPLOAD_API_URL = 'https://witusol.com/api/upload.php'
 
 export default function CreatePost() {
     const { connected, publicKey } = useWallet()
     const { createPost, generateAvatar, getProfile } = useSocial()
     const [content, setContent] = useState('')
-    const [image, setImage] = useState('')
-    const [video, setVideo] = useState('')
+    const [imageFile, setImageFile] = useState(null)
+    const [imagePreview, setImagePreview] = useState('')
+    const [videoFile, setVideoFile] = useState(null)
+    const [videoPreview, setVideoPreview] = useState('')
     const [isPosting, setIsPosting] = useState(false)
+    const [uploadProgress, setUploadProgress] = useState('')
+
+    const imageInputRef = useRef(null)
+    const videoInputRef = useRef(null)
 
     const currentUserProfile = connected && publicKey ? getProfile(publicKey.toString()) : null
 
+    // Handle image selection
     const handleImageUpload = (e) => {
         const file = e.target.files[0]
         if (file) {
-            const reader = new FileReader()
-            reader.onloadend = () => {
-                setImage(reader.result)
-                setVideo('') // Clear video if image is selected
-            }
-            reader.readAsDataURL(file)
+            setImageFile(file)
+            setImagePreview(URL.createObjectURL(file))
+            setVideoFile(null)
+            setVideoPreview('')
         }
     }
 
+    // Handle video selection
     const handleVideoUpload = (e) => {
         const file = e.target.files[0]
         if (file) {
-            // Limit video size to 5MB to avoid localStorage quota issues
-            const maxSize = 5 * 1024 * 1024 // 5MB
-            if (file.size > maxSize) {
-                alert('Video size must be less than 5MB. Please choose a smaller video.')
-                e.target.value = ''
-                return
+            setVideoFile(file)
+            setVideoPreview(URL.createObjectURL(file))
+            setImageFile(null)
+            setImagePreview('')
+        }
+    }
+
+    // Upload file to Rumahweb hosting via PHP script
+    const uploadFile = async (file) => {
+        if (!file) return null
+
+        try {
+            const formData = new FormData()
+            formData.append('file', file)
+
+            setUploadProgress('Uploading...')
+
+            const response = await fetch(UPLOAD_API_URL, {
+                method: 'POST',
+                body: formData
+            })
+
+            if (!response.ok) {
+                throw new Error('Upload failed')
             }
 
-            const reader = new FileReader()
-            reader.onloadend = () => {
-                setVideo(reader.result)
-                setImage('') // Clear image if video is selected
+            const data = await response.json()
+
+            if (data.success && data.url) {
+                return data.url
+            } else {
+                throw new Error(data.error || 'Upload failed')
             }
-            reader.readAsDataURL(file)
+        } catch (error) {
+            console.error('Error uploading file:', error)
+            throw error
         }
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        // Allow post if content OR image OR video exists
-        if ((!content.trim() && !image && !video) || !connected) return
+        if ((!content.trim() && !imageFile && !videoFile) || !connected) return
 
         setIsPosting(true)
-        createPost(content, image || null, video || null)
-        setContent('')
-        setImage('')
-        setVideo('')
-        setIsPosting(false)
+        try {
+            let imageUrl = null
+            let videoUrl = null
+
+            // Upload files to Rumahweb hosting
+            if (imageFile) {
+                imageUrl = await uploadFile(imageFile)
+            }
+            if (videoFile) {
+                videoUrl = await uploadFile(videoFile)
+            }
+
+            setUploadProgress('Creating post...')
+            createPost(content, imageUrl, videoUrl) // Sync - no await needed!
+
+            // Clear form
+            setContent('')
+            setImageFile(null)
+            setImagePreview('')
+            setVideoFile(null)
+            setVideoPreview('')
+            setUploadProgress('')
+
+            // Reset file inputs
+            if (imageInputRef.current) imageInputRef.current.value = ''
+            if (videoInputRef.current) videoInputRef.current.value = ''
+        } catch (error) {
+            console.error('Error creating post:', error)
+            alert('Failed to create post. Please try again.')
+        } finally {
+            setIsPosting(false)
+            setUploadProgress('')
+        }
+    }
+
+    const clearImage = () => {
+        setImageFile(null)
+        setImagePreview('')
+        if (imageInputRef.current) imageInputRef.current.value = ''
+    }
+
+    const clearVideo = () => {
+        setVideoFile(null)
+        setVideoPreview('')
+        if (videoInputRef.current) videoInputRef.current.value = ''
     }
 
     if (!connected) return null
@@ -87,12 +157,12 @@ export default function CreatePost() {
                     maxLength={500}
                 />
 
-                {image && (
+                {imagePreview && (
                     <div className={styles.imagePreview}>
-                        <img src={image} alt="Preview" />
+                        <img src={imagePreview} alt="Preview" />
                         <button
                             type="button"
-                            onClick={() => setImage('')}
+                            onClick={clearImage}
                             className={styles.removeImage}
                         >
                             ✕
@@ -100,16 +170,23 @@ export default function CreatePost() {
                     </div>
                 )}
 
-                {video && (
+                {videoPreview && (
                     <div className={styles.videoPreview}>
-                        <video src={video} controls />
+                        <video src={videoPreview} controls />
                         <button
                             type="button"
-                            onClick={() => setVideo('')}
+                            onClick={clearVideo}
                             className={styles.removeVideo}
                         >
                             ✕
                         </button>
+                    </div>
+                )}
+
+                {uploadProgress && (
+                    <div className={styles.uploadProgress}>
+                        <span className={styles.spinner}></span>
+                        {uploadProgress}
                     </div>
                 )}
 
@@ -126,6 +203,7 @@ export default function CreatePost() {
                         <input
                             type="file"
                             id="imageUpload"
+                            ref={imageInputRef}
                             accept="image/*"
                             onChange={handleImageUpload}
                             className={styles.fileInput}
@@ -141,7 +219,8 @@ export default function CreatePost() {
                         <input
                             type="file"
                             id="videoUpload"
-                            accept="video/mp4,video/webm,video/mov"
+                            ref={videoInputRef}
+                            accept="video/*"
                             onChange={handleVideoUpload}
                             className={styles.fileInput}
                         />
@@ -153,7 +232,7 @@ export default function CreatePost() {
                     <button
                         type="submit"
                         className={styles.postButton}
-                        disabled={(!content.trim() && !image && !video) || isPosting}
+                        disabled={(!content.trim() && !imageFile && !videoFile) || isPosting}
                     >
                         {isPosting ? 'Posting...' : 'Post'}
                     </button>
